@@ -1,0 +1,32 @@
+<div class="bg-[#F5F4F7] p-3">
+  <p class="text-[#FF9D01] uppercase text-[20px]">{{ reportTitle }}</p>
+
+  <div class="flex h-[600px] rounded-[6px]">
+    <div class="bg-white w-[80%]"></div>
+    <div class="w-[20%] px-3 border border-[#BCBCC0] text-center">
+      <button
+        (click)="showModalTruyVan()"
+        class="border w-full border-[#BCBCC0] p-2 text-[#BCBCC0] rounded-md my-2"
+      >
+        Thêm mới
+      </button>
+
+      <p class="border border-[#BCBCC0] p-2 text-[#BCBCC0] rounded-md my-2">
+        asdxz
+      </p>
+    </div>
+  </div>
+
+  <p class="text-[#666666CF] opacity-[81%] p-3">TRANG</p>
+
+  <div class="bg-white border-[2px] border-[#EAEAEA] rounded-[4px] p-3">
+    <div class="flex">
+      <p class="p-2 border-[2px] border-[#BCBCC0]">Trang 1</p>
+      <p class="p-2 border-[2px] border-[#BCBCC0]">Trang 2</p>
+    </div>
+  </div>
+  <app-them-moi
+    *ngIf="modalCreate"
+    (closeModalTruyVan)="closeModalTruyVan()"
+  ></app-them-moi>
+</div>

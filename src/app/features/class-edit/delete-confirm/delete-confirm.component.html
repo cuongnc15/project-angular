@@ -1,0 +1,36 @@
+<div class="modal">
+  <div
+    class="p-[10px] w-[418px] h-[152px] overflow-auto rounded-[16px] bg-white fixed top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2"
+  >
+    <div class="relative m-auto pb-[10px]">
+      <p class="text-textDarkBold font-bold text-center">
+        Bạn có chắc chắn muốn xóa bài viết này không?
+      </p>
+      <div
+        class="w-[90%] m-auto border-b-[1px] boder-inputBorder py-[10px]"
+      ></div>
+      <mat-icon
+        aria-hidden="false"
+        aria-label="cancel icon"
+        fontIcon="cancel"
+        class="w-[22px] absolute right-0 top-0 cursor-pointer"
+        (click)="closeModal()"
+      ></mat-icon>
+    </div>
+
+    <div class="flex gap-[30px] py-[10px] justify-center">
+      <button
+        class="w-[25%] text-[#949494] hover:shadow-md bg-[#F1F1F1] font-bold border border-[#949494] px-[16px] py-[8px] rounded-[6px]"
+        (click)="closeModal()"
+      >
+        Hủy bỏ
+      </button>
+      <button
+        class="w-[25%] text-[#F93232] hover:shadow-md bg-[#FFF0F0] font-bold border border-[#F93232] px-[16px] py-[8px] rounded-[6px]"
+        (click)="delete()"
+      >
+        Xóa
+      </button>
+    </div>
+  </div>
+</div>

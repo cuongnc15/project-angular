@@ -1,0 +1,82 @@
+<div class="px-[20px] bg-bg-primary h-full">
+  <form>
+    <input
+      type="text"
+      class="bg-white w-full rounded-[8px] text-[12px] font-roboto leading-[20.4px] p-[10px] focus:outline-primary"
+      placeholder="Nhập nội dung tìm kiếm"
+    />
+  </form>
+  <div class="text-primary font-roboto text-[20px] leading-[26px] mt-5">
+    Danh sách mẫu
+  </div>
+  <div class="grid grid-cols-4 mt-[20px] gap-[22px]">
+    <div class="col-span-1" *ngFor="let item of templateData">
+      <div
+        class="group relative before:content-[''] before:absolute before:inset-0 before:bg-[#00000055]"
+      >
+        <img
+          [src]="item.image"
+          class="w-full aspect-[268/360] object-cover"
+          alt="samplePicture"
+        />
+        <div
+          class="group-hover:flex z-[1] w-full hidden absolute top-[calc(50%-44px)] flex-col items-center"
+        >
+          <div
+            (click)="showModal(item.image)"
+            class="w-[160px] cursor-pointer hover:bg-primary hover:border-primary h-[40px] border border-white rounded-[8px] flex items-center justify-center"
+          >
+            <span
+              nz-icon
+              nzType="eye"
+              nzTheme="outline"
+              class="!text-white"
+            ></span>
+            <span
+              class="font-semibold text-[16px] leading-[24px] text-white ml-[8px]"
+            >
+              Xem trước
+            </span>
+          </div>
+          <div
+            class="w-[160px] cursor-pointer h-[40px] hover:bg-primary hover:border-primary border border-white rounded-[8px] mt-[8px] flex items-center justify-center"
+          >
+            <span
+              nz-icon
+              nzType="file-text"
+              nzTheme="outline"
+              class="!text-white"
+            ></span>
+            <span
+              class="font-semibold text-[16px] leading-[24px] text-white ml-[8px]"
+              >Sử dụng</span
+            >
+          </div>
+        </div>
+      </div>
+      <div
+        class="font-roboto font-[16px] leading-[27.2px] text-black text-center mt-[10px]"
+      >
+        {{ item.templateName }}
+      </div>
+    </div>
+  </div>
+  <div
+    (click)="watchmore()"
+    *ngIf="isWatchMoreText"
+    class="text-primary font-roboto cursor-pointer font-medium leading-[36px] underline mt-[32px] text-center mb-[37px]"
+  >
+    Xem thêm
+  </div>
+  <nz-modal
+    [(nzVisible)]="isVisible"
+    (nzOnCancel)="handleCancel()"
+    (nzOnOk)="handleOk()"
+  >
+    <ng-container *nzModalContent>
+      <div class="w-full p-[10px]">
+        <img [src]="url" alt="samplePic" />
+      </div>
+    </ng-container>
+  </nz-modal>
+</div>

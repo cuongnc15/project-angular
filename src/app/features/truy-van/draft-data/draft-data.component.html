@@ -1,0 +1,37 @@
+<div class="modal">
+  <div
+    class="p-[20px] w-[fit-content] h-[fit-content] overflow-auto rounded-[8px] bg-white fixed top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2"
+  >
+    <p class="text-[#1A1A1A] text-[22px] font-bold pb-4 m-0">
+      XEM TRƯỚC DỮ LIỆU
+    </p>
+    <app-share-table
+      class="shadow-lg"
+      [loaded]="!isLoading"
+      [data]="data"
+      [maxHeight]="'calc(100vh - 380px)'"
+    >
+      <ng-template class="!text-[#333333] font-[500]" #headers>
+        <th scope="col">ID</th>
+        <th scope="col">UserName</th>
+        <th scope="col">Mô tả</th>
+        <th scope="col">Số điện thoại</th>
+      </ng-template>
+      <ng-template class="bg-white" #rows let-row let-index="index">
+        <td>{{ row.name }}</td>
+        <td>{{ row.source }}</td>
+        <td>{{ row.select }}</td>
+        <td>{{ row.rule }}</td>
+      </ng-template>
+    </app-share-table>
+
+    <div class="flex gap-[10px] py-[20px] mx-3 justify-end items-center">
+      <button
+        class="text-[#1A1A1A] bg-[#E0E0E0] hover:shadow-md font-bold px-[16px] py-[8px] rounded-[6px]"
+        (click)="closeModal()"
+      >
+        Hủy bỏ
+      </button>
+    </div>
+  </div>
+</div>

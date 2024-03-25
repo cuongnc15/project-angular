@@ -1,0 +1,45 @@
+.ant-layout-footer {
+  padding: 0px !important;
+}
+
+.ant-checkbox-inner {
+  border-radius: 0px !important;
+}
+
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+  background-color: #ff9d01 !important;
+  color: white !important;
+  border-radius: 6px;
+  margin: 0px;
+  padding: 0px;
+}
+//.ant-menu:not(.ant-menu-horizontal) .ant-menu-item {
+//  border-top-left-radius: 30px;
+//  border-bottom-left-radius: 30px;
+//}
+
+.ant-menu-inline .ant-menu-selected::after,
+.ant-menu-inline .ant-menu-item-selected::after {
+  display: none !important;
+}
+
+.ant-menu-inline.ant-menu-root .ant-menu-item {
+  color: #666666;
+  width: 100%;
+  text-align: center;
+  margin: 0px !important;
+  padding: 10px 0px !important;
+}
+
+.ant-menu-title-content {
+  padding: 10px;
+  text-align: left;
+}
+.ant-menu-inline.ant-menu-root .ant-menu-submenu-title {
+  margin-left: 35px !important;
+  width: 165px !important;
+}
+
+.ant-menu-inline.ant-menu-root {
+  padding: 0px 20px;
+}

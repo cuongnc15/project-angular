@@ -1,0 +1,36 @@
+<div class="modal">
+  <div
+    class="p-[10px] w-[418px] h-[fit-content] overflow-auto rounded-[8px] bg-white fixed top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2"
+  >
+    <p class="text-[#1A1A1A] font-normal pt-5">
+      Tên báo cáo <span class="text-[#EA4335]">*</span>
+    </p>
+
+    <form [formGroup]="applyForm">
+      <input
+        formControlName="title"
+        required
+        id="tittle"
+        class="border w-full h-full boder-inputBorder rounded-[8px] p-[10px] focus:outline-none"
+        type="text"
+        placeholder="Nhập tên báo cáo"
+      />
+    </form>
+
+    <div class="flex gap-[10px] py-[20px] mx-3 justify-end items-center">
+      <button
+        class="text-[#1A1A1A] bg-[#E0E0E0] hover:shadow-md font-bold px-[16px] py-[8px] rounded-[6px]"
+        (click)="closeModal()"
+      >
+        Hủy bỏ
+      </button>
+
+      <button
+        (click)="createReport()"
+        class="bg-[#FF9D01] w-[25%] px-[16px] py-[8px] rounded-[6px] text-[#fff] hover:shadow-md font-bold text-center"
+      >
+        Tạo
+      </button>
+    </div>
+  </div>
+</div>

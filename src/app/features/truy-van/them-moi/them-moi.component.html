@@ -1,0 +1,70 @@
+<div class="modal">
+  <div
+    class="p-[20px] w-[fit-content] h-[fit-content] overflow-auto rounded-[8px] bg-white fixed top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2"
+  >
+    <p class="text-[#1A1A1A] text-[22px] font-bold pt-5">THÊM TRUY VẤN</p>
+
+    <div class="flex justify-end">
+      <button
+        class="text-[#FF9D01] font-medium border border-[#FF9D01] p-2 rounded-md"
+        (click)="addTruyVanConfirm()"
+      >
+        Thêm mới truy vấn
+      </button>
+    </div>
+
+    <div class="p-4 my-4 shadow-lg flex items-center gap-2 justify-between">
+      <p class="text-[#1A1A1A] text-base m-0">Tìm kiếm truy vấn theo tên</p>
+      <form [formGroup]="applyForm">
+        <input
+          formControlName="title"
+          required
+          id="tittle"
+          class="border w-full h-full boder-inputBorder rounded-[8px] p-[10px] focus:outline-none"
+          type="text"
+          placeholder="Nhập tên báo cáo"
+        />
+      </form>
+      <button class="bg-[#FF9D01] p-2 text-white">Tìm kiếm</button>
+    </div>
+
+    <app-share-table
+      class="shadow-lg"
+      [loaded]="!isLoading"
+      [data]="data"
+      [maxHeight]="'calc(100vh - 380px)'"
+    >
+      <ng-template class="!text-[#1A1A1A] !font-[500]" #headers>
+        <th scope="col">Tên Truy vấn</th>
+        <th scope="col">Nguồn dữ liệu</th>
+        <th scope="col">Chọn</th>
+        <th scope="col">Điều kiện</th>
+        <th scope="col">Thao tác</th>
+      </ng-template>
+      <ng-template class="bg-white" #rows let-row let-index="index">
+        <td>{{ row.name }}</td>
+        <td>{{ row.source }}</td>
+        <td>{{ row.select }}</td>
+        <td>{{ row.rule }}</td>
+        <td scope="col" class="text-center">
+          ` <label nz-checkbox [(ngModel)]="checked"></label> `
+        </td>
+      </ng-template>
+    </app-share-table>
+
+    <div class="flex gap-[10px] py-[20px] mx-3 justify-end items-center">
+      <button
+        class="text-[#1A1A1A] bg-[#E0E0E0] hover:shadow-md font-bold px-[16px] py-[8px] rounded-[6px]"
+        (click)="closeModal()"
+      >
+        Hủy bỏ
+      </button>
+
+      <button
+        class="bg-[#FF9D01] w-[25%] px-[16px] py-[8px] rounded-[6px] text-[#fff] hover:shadow-md font-bold text-center"
+      >
+        Lưu
+      </button>
+    </div>
+  </div>
+</div>

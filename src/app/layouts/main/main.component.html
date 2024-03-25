@@ -1,0 +1,98 @@
+<nz-layout class="app-layout">
+  <nz-sider
+    class="menu-sidebar"
+    nzCollapsible
+    nzWidth="256px"
+    nzBreakpoint="md"
+    [(nzCollapsed)]="isCollapsed"
+    [nzTrigger]="null"
+  >
+    <div class="sidebar-logo cursor-pointer" [routerLink]="'/'"></div>
+    <ul nz-menu nzTheme="light" nzMode="inline">
+      <li
+        [routerLink]="'/bao-cao'"
+        class="flex items-center"
+        nzOpen
+        nz-menu-item
+        nzMatchRouter
+      >
+        <i class="fa-solid w-[10%] fa-chart-simple text-[20px] mr-[10px]"></i>
+        <span>Báo cáo</span>
+      </li>
+
+      <li
+        [routerLink]="'/truy-van'"
+        class="flex items-center"
+        nz-menu-item
+        nzMatchRouter
+      >
+        <i class="fa-regular w-[10%] fa-bookmark text-[20px] mr-[10px]"></i>
+        <span>Truy vấn</span>
+      </li>
+
+      <li
+        [routerLink]="'/nguon-du-lieu'"
+        class="flex items-center"
+        nz-menu-item
+        nzMatchRouter
+      >
+        <i class="fa-regular w-[10%] fa-folder-open text-[20px] mr-[10px]"></i>
+        <span>Nguồn dữ liệu</span>
+      </li>
+
+      <li
+        [routerLink]="'/tai-khoan'"
+        class="flex items-center"
+        nz-menu-item
+        nzMatchRouter
+      >
+        <i class="fa-regular w-[10%] fa-user text-[20px] mr-[10px]"></i>
+        <span>Tài khoản</span>
+      </li>
+    </ul>
+  </nz-sider>
+
+  <nz-layout>
+    <nz-header>
+      <div class="app-header">
+        <div class="flex flex-col mx-4 h-full">
+          <p class="text-[#1A1A1A] text-[16px] font-medium !m-0 !p-0">
+            {{ currentPageTitle }}
+          </p>
+          <!-- <p class="text-primary text-[10px] !m-0 !p-0">{{currentPageTitle}}</p> -->
+        </div>
+        <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
+          <span
+            class="trigger"
+            nz-icon
+            [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+          ></span>
+        </span>
+        <div class="!mr-8">
+          <span class="mr-2">Nguyễn Đặng Hùng</span>
+          <nz-avatar
+            nz-dropdown
+            [nzDropdownMenu]="menu"
+            [nzSize]="30"
+            nzIcon="user"
+          ></nz-avatar>
+        </div>
+      </div>
+    </nz-header>
+
+    <nz-content>
+      <div class="inner-content">
+        <router-outlet></router-outlet>
+      </div>
+    </nz-content>
+  </nz-layout>
+</nz-layout>
+
+<nz-dropdown-menu #menu="nzDropdownMenu">
+  <ul nz-menu nzSelectable>
+    <li nz-menu-item nzDanger>
+      <i class="fa-solid fa-arrow-right-from-bracket mr-2"></i>
+      <span>Đăng xuất</span>
+    </li>
+  </ul>
+</nz-dropdown-menu>

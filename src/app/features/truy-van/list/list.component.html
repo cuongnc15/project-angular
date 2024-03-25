@@ -1,0 +1,66 @@
+<div>
+  <div class="bg-[#F5F4F7] p-3">
+    <div class="flex justify-between items-center py-3">
+      <p class="text-[#FF9D01] text-[20px]">DANH SÁCH TRUY VẤN</p>
+
+      <button
+        (click)="showCreate()"
+        class="text-[#FF9D01] w-[123px] h-[44px] bg-[#FDDEAD] font-semibold border border-[#FF9D01] rounded-[6px]"
+      >
+        Tạo mới
+      </button>
+    </div>
+
+    <app-share-table
+      class=""
+      [pageIndex]="bodyPost.page"
+      [loaded]="!isLoading"
+      [data]="data"
+      [total]="totalCount"
+      [pageSize]="bodyPost.pageSize"
+      [maxHeight]="'calc(100vh - 180px)'"
+      (pageIndexChange)="changePage($event)"
+      (pageSizeChange)="changePageSize($event)"
+    >
+      <ng-template class="!text-[#1A1A1A] !font-[500]" #headers>
+        <th scope="col">STT</th>
+        <th scope="col">Tên truy vấn</th>
+        <th scope="col">Ngày tạo</th>
+        <th scope="col">Người tạo</th>
+        <th scope="col">Thao tác</th>
+      </ng-template>
+      <ng-template class="bg-white" #rows let-row let-index="index">
+        <td>{{ index + 1 }}</td>
+        <td>{{ row.title }}</td>
+        <!-- <td>{{ row.metaDescription }}</td>
+          <td>{{ row.tags }}</td> -->
+        <!-- <td>{{ row.keyWords }}</td> -->
+        <td>{{ row.createdDate }}</td>
+        <td>{{ row.createByName }}</td>
+        <td scope="col" class="text-center">
+          <button
+            nz-dropdown
+            nzTrigger="click"
+            [nzDropdownMenu]="menu"
+            nz-button
+            nzType="default"
+            [nzPlacement]="'bottomRight'"
+          >
+            <i class="fa-solid fa-ellipsis cursor-pointer"></i>
+          </button>
+          <nz-dropdown-menu #menu="nzDropdownMenu">
+            <ul nz-menu>
+              <!-- <li nz-menu-item>Xem</li>
+                <li nz-menu-item>Chỉnh sửa</li> -->
+              <li nz-menu-item (click)="showDuplicateConfirm(row.id)">
+                Nhân bản
+              </li>
+              <!-- <li nz-menu-item>Sao chép</li> -->
+              <li nz-menu-item (click)="deletePost(row.id)">Xóa</li>
+            </ul>
+          </nz-dropdown-menu>
+        </td>
+      </ng-template>
+    </app-share-table>
+  </div>
+</div>

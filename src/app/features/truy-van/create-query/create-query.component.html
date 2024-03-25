@@ -1,0 +1,108 @@
+<div class="bg-[#F5F4F7] p-3">
+  <p class="text-[#FF9D01] text-[20px]">CHI TIẾT TRUY VẤN</p>
+  <div class="bg-white p-4">
+    <form [formGroup]="applyForm">
+      <div>
+        <p class="text-[#1A1A1A] font-normal pt-5">
+          Tên truy vấn <span class="text-[#EA4335]">*</span>
+        </p>
+
+        <input
+          formControlName="title"
+          required
+          id="tittle"
+          class="border w-full h-full boder-inputBorder rounded-[8px] p-[10px] focus:outline-none"
+          type="text"
+          placeholder="Nhập tên truy vấn"
+        />
+      </div>
+
+      <div>
+        <p class="text-[#1A1A1A] font-normal pt-5">
+          Nguồn dữ liệu <span class="text-[#EA4335]">*</span>
+        </p>
+        <div class="flex gap-2 items-center">
+          <nz-select
+            class="text-[#CCCCCC] m-0 p-2 border border-[#EAEAEA] rounded-md"
+            nzMode="tags"
+            nzPlaceHolder="Chọn nguồn dữ liệu"
+            [(ngModel)]="listOfTagOptions"
+          >
+            <nz-option
+              *ngFor="let option of listOfOption"
+              [nzLabel]="option.label"
+              [nzValue]="option.value"
+            ></nz-option>
+          </nz-select>
+        </div>
+      </div>
+
+      <div>
+        <p class="text-[#1A1A1A] font-normal pt-5">
+          Chọn <span class="text-[#EA4335]">*</span>
+        </p>
+        <div class="flex gap-2 items-center">
+          <nz-select
+            class="text-[#CCCCCC] m-0 p-2 border border-[#EAEAEA] rounded-md"
+            nzMode="tags"
+            nzPlaceHolder="Chọn thông tin muốn lấy"
+            [(ngModel)]="listOfTagOptions"
+          >
+            <nz-option
+              *ngFor="let option of listOfOption"
+              [nzLabel]="option.label"
+              [nzValue]="option.value"
+            ></nz-option>
+          </nz-select>
+        </div>
+      </div>
+
+      <div>
+        <p class="text-[#1A1A1A] font-normal pt-5">Điều kiện</p>
+        <div class="flex gap-2 items-center">
+          <nz-select
+            class="text-[#CCCCCC] m-0 p-2 border border-[#EAEAEA] rounded-md"
+            nzMode="tags"
+            nzPlaceHolder="Chọn điều kiện "
+            [(ngModel)]="listOfTagOptions"
+          >
+            <nz-option
+              *ngFor="let option of listOfOption"
+              [nzLabel]="option.label"
+              [nzValue]="option.value"
+            ></nz-option>
+          </nz-select>
+          <i
+            class="fa-solid text-[24px] fa-circle-plus text-[#CCCCCC] flex items-center cursor-pointer"
+          ></i>
+        </div>
+      </div>
+    </form>
+
+    <div class="flex gap-[10px] py-[20px] mx-3 justify-end items-center">
+      <button
+        class="text-[#1A1A1A] bg-[#E0E0E0] hover:shadow-md font-bold px-[16px] py-[8px] rounded-[6px]"
+        (click)="closeModal()"
+      >
+        Hủy bỏ
+      </button>
+
+      <button
+        (click)="showDraftData()"
+        class="text-[#FF9D01] rounded-[6px] border border-[#FF9D01] px-[10px] py-[8px]"
+      >
+        Xem trước dữ liệu
+      </button>
+
+      <button
+        class="bg-[#FF9D01] px-[16px] py-[8px] rounded-[6px] text-[#fff] hover:shadow-md font-bold text-center"
+      >
+        Lưu
+      </button>
+    </div>
+  </div>
+  <app-draft-data
+    *ngIf="modalDraftData"
+    (closeDraftData)="closeDraftData()"
+  ></app-draft-data>
+</div>
